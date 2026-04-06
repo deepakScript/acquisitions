@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "lint": "eslint .",
+    "link:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,10 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6"
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.1"
   }
 }
