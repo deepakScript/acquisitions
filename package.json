@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "imports": {
+    "#app/*": "./src/app/*",
+    "#src/*": "./src/*",
     "#config/*": "./src/config/*",
     "#controllers/*": "./src/controllers/*",
     "#middleware/*": "./src/middleware/*",
@@ -14,11 +16,10 @@
     "#validations/*": "./src/validations/*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch src/index.js",
     "start": "node src/index.js",
     "lint": "eslint .",
-    "link:fix": "eslint --fix .",
+    "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "db:generate": "drizzle-kit generate",
@@ -27,13 +28,13 @@
     "db:push": "drizzle-kit push",
     "db:pull": "drizzle-kit pull",
     "db:reset": "drizzle-kit reset",
-    "docker:dev": "docker-compose -f docker-compose.dev.yml --env-file .env.development up --build",
-    "docker:dev:logs": "docker-compose -f docker-compose.dev.yml logs -f",
-    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down -v",
-    "docker:build:dev": "docker build -t acquisitions-app-dev -f Dockerfile.dev .",
-    "docker:prod": "docker-compose -f docker-compose.prod.yml --env-file .env.production up --build",
-    "docker:down": "docker-compose down"
-
+    "docker:dev": "docker-compose -f docker-compose-dev.yml --env-file .env.development up --build",
+    "docker:dev:logs": "docker-compose -f docker-compose-dev.yml logs -f",
+    "docker:dev:down": "docker-compose -f docker-compose-dev.yml down -v",
+    "docker:build:dev": "docker build -t acquisitions-app-dev -f Dockerfile .",
+    "docker:prod": "docker-compose -f docker-compose-prod.yml --env-file .env.production up --build",
+    "docker:down": "docker-compose down",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",
@@ -72,9 +73,12 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
+    "cross-env": "^10.1.0",
     "drizzle-kit": "^0.31.10",
     "eslint": "^10.2.0",
     "globals": "^17.4.0",
-    "prettier": "^3.8.1"
+    "jest": "^30.3.0",
+    "prettier": "^3.8.1",
+    "supertest": "^7.2.2"
   }
 }

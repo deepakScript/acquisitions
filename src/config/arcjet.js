@@ -22,12 +22,12 @@ const aj = arcjet({
     }),
     slidingWindow({
       mode: "LIVE",
-      interval: '2s',
-      max: 5
+      interval: "2s",
+      max: 5,
     }),
 
-      // Tracked by IP address by default, but this can be customized
-      
+    // Tracked by IP address by default, but this can be customized
+
     // Create a token bucket rate limit. Other algorithms are supported.
     tokenBucket({
       mode: "LIVE",
